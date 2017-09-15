@@ -8,30 +8,30 @@ public class EvenGenerator extends Generator {
     /**
      * Interval of numbers.
      */
-    private int a;
-    private int b;
+    protected int a;
+    protected int b;
 
-    private final int aMG = 127;
-    private final int m = 2048;
-    private double r0 = 53.73;
+    protected final int aMG = 127;
+    protected final int m = 2048;
+    protected double r0 = 53.73;
 
-    private void setA(int a) {
+    protected void setA(int a) {
         this.a = a;
     }
 
-    private void setB(int b) {
+    protected void setB(int b) {
         this.b = b;
     }
 
-    private void setR0(double r0) {
+    protected void setR0(double r0) {
         this.r0 = r0;
     }
 
-    private int getA() {
+    protected int getA() {
         return a;
     }
 
-    private int getB() {
+    protected int getB() {
         return b;
     }
 
