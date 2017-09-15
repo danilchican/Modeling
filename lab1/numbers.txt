@@ -1,0 +1,7 @@
+WORK
+Input A: 
+232434
+Input M: 
+454868
+Input R0: 
+454861
