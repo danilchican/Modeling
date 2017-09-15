@@ -10,6 +10,14 @@ public class TriangleGenerator extends EvenGenerator {
 
     private static final int COUNT_R = 2;
 
+    private final int aMG = 127;
+    private final int m = 2048;
+    private double r0 = 48.73;
+
+    private void setR0(double r0) {
+        this.r0 = r0;
+    }
+
     /**
      * Print generator data.
      */
@@ -23,7 +31,7 @@ public class TriangleGenerator extends EvenGenerator {
         List<Double> rList = new ArrayList<>();
 
         for (int i = 0; i < COUNT_R; i++) {
-            double number = a * r0;
+            double number = aMG * r0;
 
             setR0(number % m);
             rList.add(r0 / m);

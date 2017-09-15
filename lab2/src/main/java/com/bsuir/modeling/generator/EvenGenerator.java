@@ -11,9 +11,9 @@ public class EvenGenerator extends Generator {
     protected int a;
     protected int b;
 
-    protected final int aMG = 127;
-    protected final int m = 2048;
-    protected double r0 = 53.73;
+    private final int aMG = 127;
+    private final int m = 2048;
+    private double r0 = 53.73;
 
     protected void setA(int a) {
         this.a = a;
@@ -23,7 +23,7 @@ public class EvenGenerator extends Generator {
         this.b = b;
     }
 
-    protected void setR0(double r0) {
+    private void setR0(double r0) {
         this.r0 = r0;
     }
 
