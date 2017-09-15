@@ -20,6 +20,7 @@ public class Main {
         generators.forEach(Generator::input);
         generators.forEach(g -> {
             g.generate();
+            g.print();
             g.showHistogram();
         });
     }
