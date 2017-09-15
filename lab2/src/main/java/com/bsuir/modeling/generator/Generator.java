@@ -180,18 +180,6 @@ public abstract class Generator {
     }
 
     /**
-     * Get random number in range.
-     *
-     * @return random number
-     */
-    double random() {
-        final double min = 0;
-        final double max = 1;
-
-        return ThreadLocalRandom.current().nextDouble(min, max);
-    }
-
-    /**
      * Print generator data.
      */
     public void print() {
