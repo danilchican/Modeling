@@ -3,11 +3,6 @@ package com.bsuir.danilchican.generator;
 public class EvenGenerator extends Generator {
 
     @Override
-    protected boolean isValidValues() {
-        return false;
-    }
-
-    @Override
     public void generate() {
 
     }
@@ -18,17 +13,22 @@ public class EvenGenerator extends Generator {
     }
 
     @Override
+    public void input() {
+
+    }
+
+    @Override
+    public void print() {
+
+    }
+
+    @Override
+    protected boolean isValidValues() {
+        return false;
+    }
+
+    @Override
     protected double getRandomNumber() {
         return 0;
-    }
-
-    @Override
-    protected void input() {
-
-    }
-
-    @Override
-    protected void print() {
-
     }
 }
