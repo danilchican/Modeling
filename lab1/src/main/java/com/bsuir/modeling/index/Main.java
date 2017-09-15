@@ -16,10 +16,6 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        // 100 000
-        // 127
-        // 2048
-        // 53,93
         InputManager manager = new InputManager();
         Generator generator = manager.getGenerator();
 
@@ -33,7 +29,6 @@ public class Main {
         histogram.show();
 
         generator.checkComparingRange();
-       // generator.round();
 
         print("Period: " + generator.calculatePeriod());
         print("Aperiod: " + generator.calculateAperiod());
