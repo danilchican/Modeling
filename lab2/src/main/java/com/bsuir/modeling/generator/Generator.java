@@ -17,7 +17,7 @@ public abstract class Generator {
      */
     public static final int INTERVAL_COUNT = 20;
     private static final int VALUES_COUNT = 1_000_000;
-    private static final int N_POW = 2;
+    public static final int N_POW = 2;
 
     private boolean isHistogramCalculated = false;
 
@@ -55,10 +55,6 @@ public abstract class Generator {
 
     private void setHistogramCalculated(boolean histogramCalculated) {
         isHistogramCalculated = histogramCalculated;
-    }
-
-    public List<Double> getValues() {
-        return values;
     }
 
     /**

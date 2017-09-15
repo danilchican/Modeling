@@ -71,7 +71,7 @@ public class EvenGenerator extends Generator {
         Printer.print("Input B: ");
         setB(in.nextInt());
 
-        if(!isValidValues()) {
+        if (!isValidValues()) {
             Printer.print("Your data is invalid. Try again.");
             input();
         }
