@@ -15,23 +15,23 @@ public class EvenGenerator extends Generator {
     private final int m = 2048;
     private double r0 = 53.73;
 
-    public void setA(int a) {
+    private void setA(int a) {
         this.a = a;
     }
 
-    public void setB(int b) {
+    private void setB(int b) {
         this.b = b;
     }
 
-    public void setR0MainGen(double r0) {
+    private void setR0(double r0) {
         this.r0 = r0;
     }
 
-    public int getA() {
+    private int getA() {
         return a;
     }
 
-    public int getB() {
+    private int getB() {
         return b;
     }
 
@@ -49,7 +49,7 @@ public class EvenGenerator extends Generator {
     @Override
     protected double getRandomNumber() {
         double number = aMG * r0;
-        setR0MainGen(number % m);
+        setR0(number % m);
         number = r0 / m;
 
         return a + (b - a) * number;
