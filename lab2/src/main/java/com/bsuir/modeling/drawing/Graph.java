@@ -1,4 +1,4 @@
-package com.bsuir.danilchican.drawing;
+package com.bsuir.modeling.drawing;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;

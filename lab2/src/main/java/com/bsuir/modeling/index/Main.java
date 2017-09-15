@@ -1,7 +1,7 @@
-package com.bsuir.danilchican.index;
+package com.bsuir.modeling.index;
 
-import com.bsuir.danilchican.generator.EvenGenerator;
-import com.bsuir.danilchican.generator.Generator;
+import com.bsuir.modeling.generator.EvenGenerator;
+import com.bsuir.modeling.generator.Generator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class Main {
      */
     public static void main(String[] args) {
         List<Generator> generators = new ArrayList<Generator>() {{
-            add(new EvenGenerator());
+            add(new EvenGenerator()); // A: -5; B:15
         }};
 
         generators.forEach(Generator::input);

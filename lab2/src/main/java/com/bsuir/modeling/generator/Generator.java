@@ -1,13 +1,14 @@
-package com.bsuir.danilchican.generator;
+package com.bsuir.modeling.generator;
 
-import com.bsuir.danilchican.data.Printer;
-import com.bsuir.danilchican.drawing.Graph;
-import com.bsuir.danilchican.drawing.Histogram;
+import com.bsuir.modeling.data.Printer;
+import com.bsuir.modeling.drawing.Graph;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Generator {
 
@@ -15,7 +16,7 @@ public abstract class Generator {
      * Constants.
      */
     public static final int INTERVAL_COUNT = 20;
-    private static final int VALUES_COUNT = 50_000;
+    private static final int VALUES_COUNT = 1_000_000;
     private static final int N_POW = 2;
 
     private boolean isHistogramCalculated = false;
@@ -27,12 +28,25 @@ public abstract class Generator {
     private List<Double> xAxis;
     private List<Double> yAxis;
 
-    protected Graph histogram;
+    /**
+     * Input manager.
+     */
+    Scanner in;
 
+    /**
+     * Generator's histogram.
+     */
+    Graph histogram;
+
+    /**
+     * Default constructor.
+     */
     Generator() {
         this.values = new ArrayList<>();
         this.xAxis = new ArrayList<>();
         this.yAxis = new ArrayList<>();
+
+        this.in = new Scanner(System.in);
     }
 
     private boolean isHistogramCalculated() {
@@ -169,15 +183,48 @@ public abstract class Generator {
         return null;
     }
 
-    public abstract void generate();
+    /**
+     * Get random number in range.
+     *
+     * @return random number
+     */
+    double random() {
+        final double min = 0;
+        final double max = 1;
+
+        return ThreadLocalRandom.current().nextDouble(min, max);
+    }
+
+    /**
+     * Print generator data.
+     */
+    public void print() {
+        Printer.print("Histogram data: " + getHistogramData());
+
+        Printer.print("Mx: " + calculateMx());
+        Printer.print("Dx: " + calculateDx());
+        Printer.print("Std: " + calculateStd());
+    }
+
+    /**
+     * Generate numbers.
+     */
+    public void generate() {
+        values.clear();
+
+        for (int i = 0; i < VALUES_COUNT; i++) {
+            double value = getRandomNumber();
+            values.add(value);
+        }
+
+        calculateHistogram();
+    }
+
+    protected abstract double getRandomNumber();
 
     public abstract void showHistogram();
 
     public abstract void input();
 
-    public abstract void print();
-
     protected abstract boolean isValidValues();
-
-    protected abstract double getRandomNumber();
 }

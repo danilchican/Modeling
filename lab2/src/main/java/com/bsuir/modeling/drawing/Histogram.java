@@ -1,6 +1,6 @@
-package com.bsuir.danilchican.drawing;
+package com.bsuir.modeling.drawing;
 
-import com.bsuir.danilchican.generator.Generator;
+import com.bsuir.modeling.generator.Generator;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.bsuir.danilchican.data;
+package com.bsuir.modeling.data;
 
 public class Printer {
 
