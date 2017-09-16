@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Histogram extends Graph {
 
-    private static final int DEFAULT_WIDTH = 800;
-    private static final int DEFAULT_HEIGHT = 470;
+    private static final int DEFAULT_WIDTH = 600;
+    private static final int DEFAULT_HEIGHT = 370;
 
     /**
      * Constructor to create new graph.
