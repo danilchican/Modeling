@@ -8,18 +8,18 @@ public class EvenGenerator extends Generator {
     /**
      * Interval of numbers.
      */
-    protected int a;
-    protected int b;
+    protected double a;
+    protected double b;
 
     private final int aMG = 127;
     private final int m = 2048;
     private double r0 = 53.73;
 
-    protected void setA(int a) {
+    protected void setA(double a) {
         this.a = a;
     }
 
-    protected void setB(int b) {
+    protected void setB(double b) {
         this.b = b;
     }
 
@@ -27,11 +27,11 @@ public class EvenGenerator extends Generator {
         this.r0 = r0;
     }
 
-    protected int getA() {
+    protected double getA() {
         return a;
     }
 
-    protected int getB() {
+    protected double getB() {
         return b;
     }
 
@@ -66,10 +66,10 @@ public class EvenGenerator extends Generator {
         Printer.print(this.getClass().getName() + ":");
 
         Printer.print("Input A: ");
-        setA(in.nextInt());
+        setA(in.nextDouble());
 
         Printer.print("Input B: ");
-        setB(in.nextInt());
+        setB(in.nextDouble());
 
         if (!isValidValues()) {
             Printer.print("Your data is invalid. Try again.");

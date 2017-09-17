@@ -10,9 +10,9 @@ public class TriangleGenerator extends EvenGenerator {
 
     private static final int COUNT_R = 2;
 
-    private final int aMG = 127;
-    private final int m = 2048;
-    private double r0 = 48.73;
+    private final int aMG = 67;
+    private final int m = 106897;
+    private double r0 = 1;
 
     private void setR0(double r0) {
         this.r0 = r0;

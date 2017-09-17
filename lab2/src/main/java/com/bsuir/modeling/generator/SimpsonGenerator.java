@@ -1,20 +1,43 @@
 package com.bsuir.modeling.generator;
 
+import com.bsuir.modeling.data.Printer;
 import com.bsuir.modeling.drawing.Histogram;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpsonGenerator extends EvenGenerator {
+public class SimpsonGenerator extends Generator {
+
+    /**
+     * Interval of numbers.
+     */
+    private double a;
+    private double b;
 
     private static final int COUNT_R = 2;
 
-    private final int aMG = 127;
-    private final int m = 2048;
-    private double r0 = 57.73;
+    private final int aMG = 67;
+    private final int m = 106897;
+    private double r0 = 1;
+
+    private void setA(double a) {
+        this.a = a / 2;
+    }
+
+    private void setB(double b) {
+        this.b = b / 2;
+    }
 
     private void setR0(double r0) {
         this.r0 = r0;
+    }
+
+    private double getA() {
+        return a;
+    }
+
+    private double getB() {
+        return b;
     }
 
     /**
@@ -22,6 +45,9 @@ public class SimpsonGenerator extends EvenGenerator {
      */
     @Override
     public void print() {
+        Printer.print(this.getClass().getName() + ":");
+        Printer.print("A = " + getA() + ", B = " + getB());
+
         super.print();
     }
 
@@ -36,24 +62,34 @@ public class SimpsonGenerator extends EvenGenerator {
             rList.add(r0 / m);
         }
 
-        return a / 2 + (b / 2 - a / 2) * rList.get(0)
-                + a / 2 + (b / 2 - a / 2) * rList.get(1);
+        return a + (b - a) * rList.get(0)
+                + a + (b - a) * rList.get(1);
     }
 
     @Override
     public void showHistogram() {
         this.histogram = new Histogram("SimpsonGenerator", getHistogramData());
         this.histogram.show();
-
     }
 
     @Override
     public void input() {
-        super.input();
+        Printer.print(this.getClass().getName() + ":");
+
+        Printer.print("Input A: ");
+        setA(in.nextDouble());
+
+        Printer.print("Input B: ");
+        setB(in.nextDouble());
+
+        if (!isValidValues()) {
+            Printer.print("Your data is invalid. Try again.");
+            input();
+        }
     }
 
     @Override
     protected boolean isValidValues() {
-        return super.isValidValues();
+        return a < b;
     }
 }

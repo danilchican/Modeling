@@ -16,9 +16,9 @@ public class Main {
             add(new EvenGenerator()); // A: -5; B: 15
             add(new GaussianGenerator()); // N: 6; Mx: 0.45; std: 0.33
             add(new ExponentialGenerator()); // N: 50; Lambda: 5.68
-            add(new GammaGenerator()); // N: 3; Lambda: 1.4 || N: 2; Lambda: 3
-            add(new TriangleGenerator()); // A: -13; B: 21
-            add(new SimpsonGenerator()); // A: -6; B: 2
+            //add(new GammaGenerator()); // N: 3; Lambda: 1.4 TODO fix
+            add(new TriangleGenerator()); // A: 0.02; B: 0.95
+            add(new SimpsonGenerator()); // A: 0.1; B: 0.75
         }};
 
         generators.forEach(Generator::input);
