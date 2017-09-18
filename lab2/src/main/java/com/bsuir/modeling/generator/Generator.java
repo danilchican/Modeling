@@ -16,14 +16,14 @@ public abstract class Generator {
      */
     public static final int INTERVAL_COUNT = 20;
     private static final int VALUES_COUNT = 1_000_000;
-    public static final int N_POW = 2;
+    static final int N_POW = 2;
 
     private boolean isHistogramCalculated = false;
 
     /**
      * Storage of generated values.
      */
-    private List<Double> values;
+    List<Double> values;
     private List<Double> xAxis;
     private List<Double> yAxis;
 
@@ -48,6 +48,67 @@ public abstract class Generator {
         this.in = new Scanner(System.in);
     }
 
+    /**
+     * Calculate Mean value.
+     *
+     * @return Mx
+     */
+    public abstract double calculateMx();
+
+    /**
+     * Calculate Dispersion value.
+     *
+     * @return Dx
+     */
+    public abstract double calculateDx();
+
+    /**
+     * Print generator data.
+     */
+    public void print() {
+        Printer.print("Histogram data: " + getHistogramData());
+
+        Printer.print("Mx: " + calculateMx());
+        Printer.print("Dx: " + calculateDx());
+        Printer.print("Std: " + calculateStd());
+    }
+
+    /**
+     * Generate numbers.
+     */
+    public void generate() {
+        values.clear();
+
+        for (int i = 0; i < VALUES_COUNT; i++) {
+            double value = getRandomNumber();
+            values.add(value);
+        }
+
+        calculateHistogram();
+    }
+
+    protected abstract double getRandomNumber();
+
+    public abstract void showHistogram();
+
+    public abstract void input();
+
+    protected abstract boolean isValidValues();
+
+    /**
+     * Get histogram data.
+     *
+     * @return histogram data
+     */
+    List<Double> getHistogramData() {
+        if (isHistogramCalculated()) {
+            return this.yAxis;
+        }
+
+        Printer.print("Cannot get histogram data: that is not calculated");
+        return null;
+    }
+
     private boolean isHistogramCalculated() {
         return isHistogramCalculated;
     }
@@ -57,47 +118,11 @@ public abstract class Generator {
     }
 
     /**
-     * Calculate Mean value.
-     *
-     * @return Mx
-     */
-    public double calculateMx() {
-        if (values.isEmpty()) {
-            Printer.print("Cannot calculate Mx: list is empty");
-            return -1;
-        }
-
-        return values
-                .stream()
-                .mapToDouble(Double::doubleValue).sum() / values.size();
-    }
-
-    /**
-     * Calculate Dispersion value.
-     *
-     * @return Dx
-     */
-    public double calculateDx() {
-        if (values.isEmpty()) {
-            Printer.print("Cannot calculate Dx: list is empty");
-            return -1;
-        }
-
-        ArrayList<Double> list = new ArrayList<>();
-        double Mx = calculateMx();
-
-        values.forEach(v -> list.add(Math.pow(v - Mx, N_POW)));
-        double Dx = list.stream().mapToDouble(Double::doubleValue).sum();
-
-        return Dx / (values.size() - 1);
-    }
-
-    /**
      * Calculate standard deviation.
      *
      * @return std
      */
-    public double calculateStd() {
+    private double calculateStd() {
         if (values.isEmpty()) {
             Printer.print("Cannot calculate std: list is empty");
             return -1;
@@ -112,7 +137,7 @@ public abstract class Generator {
     /**
      * Calculate histogram data.
      */
-    public void calculateHistogram() {
+    private void calculateHistogram() {
         if (values.isEmpty()) {
             Printer.print("Cannot calculate histogram. Values list is empty.");
             return;
@@ -163,51 +188,4 @@ public abstract class Generator {
 
         this.setHistogramCalculated(true);
     }
-
-    /**
-     * Get histogram data.
-     *
-     * @return histogram data
-     */
-    public List<Double> getHistogramData() {
-        if (isHistogramCalculated()) {
-            return this.yAxis;
-        }
-
-        Printer.print("Cannot get histogram data: that is not calculated");
-        return null;
-    }
-
-    /**
-     * Print generator data.
-     */
-    public void print() {
-        Printer.print("Histogram data: " + getHistogramData());
-
-        Printer.print("Mx: " + calculateMx());
-        Printer.print("Dx: " + calculateDx());
-        Printer.print("Std: " + calculateStd());
-    }
-
-    /**
-     * Generate numbers.
-     */
-    public void generate() {
-        values.clear();
-
-        for (int i = 0; i < VALUES_COUNT; i++) {
-            double value = getRandomNumber();
-            values.add(value);
-        }
-
-        calculateHistogram();
-    }
-
-    protected abstract double getRandomNumber();
-
-    public abstract void showHistogram();
-
-    public abstract void input();
-
-    protected abstract boolean isValidValues();
 }

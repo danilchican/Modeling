@@ -36,6 +36,26 @@ public class GammaGenerator extends Generator {
     }
 
     /**
+     * Calculate Mean value.
+     *
+     * @return Mx
+     */
+    @Override
+    public double calculateMx() {
+        return n / lambda;
+    }
+
+    /**
+     * Calculate Dispersion value.
+     *
+     * @return Dx
+     */
+    @Override
+    public double calculateDx() {
+        return n / Math.pow(lambda, N_POW);
+    }
+
+    /**
      * Print generator data.
      */
     @Override

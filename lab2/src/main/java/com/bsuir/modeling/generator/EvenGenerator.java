@@ -8,18 +8,18 @@ public class EvenGenerator extends Generator {
     /**
      * Interval of numbers.
      */
-    protected double a;
-    protected double b;
+    double a;
+    double b;
 
     private final int aMG = 127;
     private final int m = 2048;
     private double r0 = 53.73;
 
-    protected void setA(double a) {
+    private void setA(double a) {
         this.a = a;
     }
 
-    protected void setB(double b) {
+    private void setB(double b) {
         this.b = b;
     }
 
@@ -27,12 +27,27 @@ public class EvenGenerator extends Generator {
         this.r0 = r0;
     }
 
-    protected double getA() {
+    private double getA() {
         return a;
     }
 
-    protected double getB() {
+    private double getB() {
         return b;
+    }
+
+    @Override
+    public double calculateMx() {
+        return (a + b) / 2.0;
+    }
+
+    /**
+     * Calculate Dispersion value.
+     *
+     * @return Dx
+     */
+    @Override
+    public double calculateDx() {
+        return Math.pow((b-a), N_POW) / 12.0;
     }
 
     /**

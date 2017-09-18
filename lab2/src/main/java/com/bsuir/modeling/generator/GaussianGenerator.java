@@ -52,6 +52,21 @@ public class GaussianGenerator extends Generator {
         return std;
     }
 
+    @Override
+    public double calculateMx() {
+        return getMx();
+    }
+
+    /**
+     * Calculate Dispersion value.
+     *
+     * @return Dx
+     */
+    @Override
+    public double calculateDx() {
+        return Math.pow(getStd(), N_POW);
+    }
+
     /**
      * Print generator data.
      */
@@ -60,7 +75,6 @@ public class GaussianGenerator extends Generator {
         Printer.print(this.getClass().getName() + ":");
         Printer.print("N = " + getN());
 
-        // TODO fix print Mx & Dx
         super.print();
     }
 
