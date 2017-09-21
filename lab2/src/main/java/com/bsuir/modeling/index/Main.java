@@ -14,12 +14,12 @@ public class Main {
      */
     public static void main(String[] args) {
         List<Generator> generators = new ArrayList<Generator>() {{
-            add(new EvenGenerator()); // A: -5; B: 15
-            add(new GaussianGenerator()); // N: 6; Mx: 0.45; std: 0.33
-            add(new ExponentialGenerator()); // N: 50; Lambda: 5.68
-            add(new GammaGenerator()); // N: 1; Lambda: 5.6
-            add(new TriangleGenerator()); // A: 0.02; B: 0.95
-            add(new SimpsonGenerator()); // A: 0.1; B: 0.75
+            add(new EvenGenerator()); // A: -0,7; B: -0,5
+            add(new GaussianGenerator()); // N: 6; Mx: 80; std: 40
+            add(new ExponentialGenerator()); // Lambda: 0,01
+            add(new GammaGenerator()); // N: 8; Lambda: 8
+            add(new TriangleGenerator()); // A: 0; B: 10
+            add(new SimpsonGenerator()); // A: -10; B: 0
         }};
 
         generators.forEach(Generator::input);

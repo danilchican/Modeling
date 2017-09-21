@@ -13,7 +13,6 @@ public class ExponentialGenerator extends Generator {
     private double r0 = 1567;
 
     private double lambda;
-    private int n;
 
     private void setR0(double r0) {
         this.r0 = r0;
@@ -23,16 +22,8 @@ public class ExponentialGenerator extends Generator {
         this.lambda = lambda;
     }
 
-    private void setN(int n) {
-        this.n = n;
-    }
-
     private double getLambda() {
         return lambda;
-    }
-
-    private int getN() {
-        return n;
     }
 
     /**
@@ -41,7 +32,7 @@ public class ExponentialGenerator extends Generator {
     @Override
     public void print() {
         Printer.print(this.getClass().getName() + ":");
-        Printer.print("N = " + getN() + ", Lambda = " + getLambda());
+        Printer.print("Lambda = " + getLambda());
 
         super.print();
     }
@@ -64,9 +55,6 @@ public class ExponentialGenerator extends Generator {
     public void input() {
         Printer.print(this.getClass().getName() + ":");
 
-        Printer.print("Input N: ");
-        setN(in.nextInt());
-
         Printer.print("Input Lambda: ");
         setLambda(in.nextDouble());
 
@@ -78,6 +66,6 @@ public class ExponentialGenerator extends Generator {
 
     @Override
     protected boolean isValidValues() {
-        return n > 0 && lambda > 0;
+        return lambda > 0;
     }
 }
