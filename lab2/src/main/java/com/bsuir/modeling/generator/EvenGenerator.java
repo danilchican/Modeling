@@ -35,21 +35,6 @@ public class EvenGenerator extends Generator {
         return b;
     }
 
-    @Override
-    public double calculateMx() {
-        return (a + b) / 2.0;
-    }
-
-    /**
-     * Calculate Dispersion value.
-     *
-     * @return Dx
-     */
-    @Override
-    public double calculateDx() {
-        return Math.pow((b-a), N_POW) / 12.0;
-    }
-
     /**
      * Print generator data.
      */

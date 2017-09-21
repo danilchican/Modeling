@@ -36,26 +36,6 @@ public class ExponentialGenerator extends Generator {
     }
 
     /**
-     * Calculate Mean value.
-     *
-     * @return Mx
-     */
-    @Override
-    public double calculateMx() {
-        return 1 / lambda;
-    }
-
-    /**
-     * Calculate Dispersion value.
-     *
-     * @return Dx
-     */
-    @Override
-    public double calculateDx() {
-        return Math.pow(1 / lambda, N_POW);
-    }
-
-    /**
      * Print generator data.
      */
     @Override

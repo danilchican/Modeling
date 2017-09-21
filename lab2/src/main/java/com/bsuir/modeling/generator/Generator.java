@@ -53,14 +53,36 @@ public abstract class Generator {
      *
      * @return Mx
      */
-    public abstract double calculateMx();
+    public double calculateMx() {
+        if (values.isEmpty()) {
+            Printer.print("Cannot calculate Mx: list is empty");
+            return -1;
+        }
+
+        return values
+                .stream()
+                .mapToDouble(Double::doubleValue).sum() / values.size();
+    }
 
     /**
      * Calculate Dispersion value.
      *
      * @return Dx
      */
-    public abstract double calculateDx();
+    public double calculateDx() {
+        if (values.isEmpty()) {
+            Printer.print("Cannot calculate Dx: list is empty");
+            return -1;
+        }
+
+        ArrayList<Double> list = new ArrayList<>();
+        double Mx = calculateMx();
+
+        values.forEach(v -> list.add(Math.pow(v - Mx, N_POW)));
+        double Dx = list.stream().mapToDouble(Double::doubleValue).sum();
+
+        return Dx / (values.size() - 1);
+    }
 
     /**
      * Print generator data.
