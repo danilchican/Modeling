@@ -10,7 +10,7 @@ public class Workplace {
     private Map<String, Integer> statistics = new LinkedHashMap<>();
 
     public static int QUEUE_ORDERS_COUNT = 0;
-    public static int QUEUE_IS_FULL = 0;
+    public static int TIME_QUEUE_IS_FULL = 0;
 
     public static final String START_STATE = "2000";
 
@@ -74,27 +74,16 @@ public class Workplace {
 
     public void showMainStatistics(Machine machine) {
         double q = (double) machine.getEnd().getCounter() / CYCLES_COUNT * REQUEST_TIME;
-        double Woch = QUEUE_IS_FULL / (double) QUEUE_ORDERS_COUNT;
+        double Woch = TIME_QUEUE_IS_FULL / (double) QUEUE_ORDERS_COUNT;
 
-        System.out.println("\nK1: " + String.format("%.5f", this.getK1()));
-        System.out.println("K2: " + String.format("%.5f", this.getK2()));
+        System.out.println("\nK1: " + String.format("%.5f", getK1()));
+        System.out.println("K2: " + String.format("%.5f", getK2()));
         System.out.println("Q:  " + String.format("%.5f", q));
         System.out.println("W:  " + String.format("%.5f", Woch));
     }
 
     private int getTransitionsCount() {
         return statistics.values().stream().mapToInt(i -> i).sum();
-    }
-
-    private double getAverageQueueLength() {
-        int countOfTransitions = getTransitionsCount();
-
-        double P2110 = (double) statistics.get("2110") / countOfTransitions;
-        double P2111 = (double) statistics.get("2111") / countOfTransitions;
-        double P1111 = (double) statistics.get("1111") / countOfTransitions;
-        double P1110 = (double) statistics.get("1110") / countOfTransitions;
-
-        return P2110 + P2111 + P1111 + P1110;
     }
 
     private double getK1() {

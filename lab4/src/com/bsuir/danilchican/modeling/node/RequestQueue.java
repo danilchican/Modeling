@@ -20,10 +20,6 @@ public class RequestQueue extends Node {
 
     @Override
     public void activate(Request request) {
-        if (isFull()) {
-            throw new IllegalStateException("Can't forward Request to blocked Node");
-        }
-
         if (request != null) {
             Workplace.QUEUE_ORDERS_COUNT++;
 
@@ -44,7 +40,7 @@ public class RequestQueue extends Node {
         next.process();
 
         if(!queue.isEmpty()) {
-            Workplace.QUEUE_IS_FULL++;
+            Workplace.TIME_QUEUE_IS_FULL++;
 
             if (!next.isFull()) {
                 next.activate(queue.remove());

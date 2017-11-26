@@ -12,8 +12,8 @@ public class Main {
     public static final int REQUEST_TIME = 2;
     private static final int QUEUE_CAPACITY = 1;
 
-    private static final double P1 = 0.4;
-    private static final double P2 = 0.45;
+    private static final double P1 = 0.9;
+    private static final double P2 = 0;
 
     public static void main(String[] args) {
         Workplace workplace = new Workplace();
